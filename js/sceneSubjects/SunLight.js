@@ -1,6 +1,6 @@
 function SunLight(scene) {
     const color = 0xFFFFFF;
-    const intensity = 0.5;
+    const intensity = 0.1;
     const sunLight = new THREE.PointLight(color, intensity);
     sunLight.position.set(0, 0, 0);
 
