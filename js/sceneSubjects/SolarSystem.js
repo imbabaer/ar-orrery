@@ -220,7 +220,7 @@ function SolarSystem(scene, time) {
 
     const solarSystem = new THREE.Group();
     scene.add(solarSystem);
-    var sunMesh = createSun("sun", 20, scene, solarSystem, astrionomicalBodies, loader, "assets/textures/fantasy1/sun1.jpeg");
+    var sunMesh = createSun("sun", 20, scene, solarSystem, astrionomicalBodies, loader, "assets/textures/fantasy1/black.png");
 
     planets.forEach(planet => {
 
@@ -397,6 +397,7 @@ function createPlanet(name, size, distanceX, scene, orbit, astrionomicalBodies, 
 
     planetMesh.position.set(distanceX, 0, 0);
     planetMesh.rotation.set(THREE.Math.degToRad(selfTilt), 0, 0);
+    planetMesh.name = name;
 
     orbit.add(planetMesh);
     astrionomicalBodies.push(planetMesh);
@@ -411,6 +412,7 @@ function createSun(name, size, scene, orbit, astrionomicalBodies, loader, textur
     var texture = loader.load(texturePath ?? "assets/textures/" + name + ".jpg");
     var material = illuminated ? new THREE.MeshBasicMaterial({ map: texture }) : new THREE.MeshPhongMaterial({ map: texture });
     var sunMesh = new THREE.Mesh(geometry, material);
+    sunMesh.name = name;
 
     orbit.add(sunMesh);
     astrionomicalBodies.push(sunMesh);

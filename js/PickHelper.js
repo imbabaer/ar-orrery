@@ -24,7 +24,7 @@ class PickHelper {
             this.pickedObjectSavedColor = this.pickedObject.material.color;
             // set its emissive color to flashing red/yellow
             this.pickedObject.material.color = new THREE.Color((time * 8) % 2 > 1 ? 0xFFFF00 : 0xFF0000);
-            this.openModal(this.pickedObject.position.x);
+            this.openModal(this.pickedObject.name);
         }
     }
 
@@ -37,7 +37,7 @@ class PickHelper {
         scene.add(sprite);
     }
 
-    openModal(positionX) {
+    openModal(name) {
         // Get the modal
         var modal = document.getElementById("myModal");
 
@@ -54,25 +54,25 @@ class PickHelper {
         var moons = document.getElementById("moons");
         var rings = document.getElementById("rings");
         var adjective = document.getElementById("adjective");
-        
+
 
         modal.style.display = "block";
 
-        name.innerHTML = AstronomicalBodiesNames[positionX].name + "  ";
+        name.innerHTML = AstronomicalBodiesNames[name].name + "  ";
         planetSymbol.src = "./assets/astronomical-symbol/" +
-                AstronomicalBodiesNames[positionX].name + "-symbol.png";
-        volumeXEarths.innerHTML = AstronomicalBodiesNames[positionX].volumeXEarths;
-        orbitDistance.innerHTML = AstronomicalBodiesNames[positionX].orbitDistance;
-        equatorialRadius.innerHTML = AstronomicalBodiesNames[positionX].equatorialRadius;
-        surfaceGravity.innerHTML = AstronomicalBodiesNames[positionX].surfaceGravity;
-        rotationPeriodEarthDays.innerHTML = AstronomicalBodiesNames[positionX].rotationPeriodEarthDays;
-        orbitalPeriod.innerHTML = AstronomicalBodiesNames[positionX].orbitalPeriod;
-        meanOrbitVelocity.innerHTML = AstronomicalBodiesNames[positionX].meanOrbitVelocity;
-        surfaceTemperature.innerHTML = AstronomicalBodiesNames[positionX].surfaceTemperature;
-        atmoshpericConstituents.innerHTML = AstronomicalBodiesNames[positionX].atmoshpericConstituents;
-        moons.innerHTML = AstronomicalBodiesNames[positionX].moons;
-        rings.innerHTML = AstronomicalBodiesNames[positionX].rings;
-        adjective.innerHTML = AstronomicalBodiesNames[positionX].adjective;
+            AstronomicalBodiesNames[name].name + "-symbol.png";
+        volumeXEarths.innerHTML = AstronomicalBodiesNames[name].volumeXEarths;
+        orbitDistance.innerHTML = AstronomicalBodiesNames[name].orbitDistance;
+        equatorialRadius.innerHTML = AstronomicalBodiesNames[name].equatorialRadius;
+        surfaceGravity.innerHTML = AstronomicalBodiesNames[name].surfaceGravity;
+        rotationPeriodEarthDays.innerHTML = AstronomicalBodiesNames[name].rotationPeriodEarthDays;
+        orbitalPeriod.innerHTML = AstronomicalBodiesNames[name].orbitalPeriod;
+        meanOrbitVelocity.innerHTML = AstronomicalBodiesNames[name].meanOrbitVelocity;
+        surfaceTemperature.innerHTML = AstronomicalBodiesNames[name].surfaceTemperature;
+        atmoshpericConstituents.innerHTML = AstronomicalBodiesNames[name].atmoshpericConstituents;
+        moons.innerHTML = AstronomicalBodiesNames[name].moons;
+        rings.innerHTML = AstronomicalBodiesNames[name].rings;
+        adjective.innerHTML = AstronomicalBodiesNames[name].adjective;
     }
 }
 
@@ -80,7 +80,7 @@ class PickHelper {
 // Astronomical bodie name with its position (x)
 // This should be in a JSON file :/
 var AstronomicalBodiesNames = {
-    0: {
+    "sun": {
         "name": "Sun",
         "volumeXEarths": "1,300,000 ",
         "orbitDistance": "0",
@@ -95,7 +95,22 @@ var AstronomicalBodiesNames = {
         "rings": "No",
         "adjective": "Solar",
     },
-    60: {
+    "Valt":{
+        "name": "Valt",
+        "volumeXEarths": "? ",
+        "orbitDistance": "100 million miles",
+        "equatorialRadius": "?",
+        "surfaceGravity": "?",
+        "rotationPeriodEarthDays": "?",
+        "orbitalPeriod": "NA",
+        "meanOrbitVelocity": "NA",
+        "surfaceTemperature": "?",
+        "atmoshpericConstituents": "?",
+        "moons": "0",
+        "rings": "No",
+        "adjective": "detached moon",
+    },
+    "Mercury": {
         "name": "Mercury",
         "volumeXEarths": "0.056",
         "orbitDistance": "57,909,227",
@@ -110,7 +125,7 @@ var AstronomicalBodiesNames = {
         "rings": "No",
         "adjective": "Mercurian, Mercurial",
     },
-    80: {
+    "Venus": {
         "name": "Venus",
         "volumeXEarths": "0.866",
         "orbitDistance": "108,209,475",
@@ -125,7 +140,7 @@ var AstronomicalBodiesNames = {
         "rings": "No",
         "adjective": "Venusian",
     },
-    110: {
+    "Earth": {
         "name": "Earth",
         "volumeXEarths": "1",
         "orbitDistance": "149,598,262",
@@ -140,7 +155,7 @@ var AstronomicalBodiesNames = {
         "rings": "No",
         "adjective": "Terrestrial, Terran",
     },
-    18: {
+    "Moon": {
         "name": "Moon",
         "volumeXEarths": "0.02",
         "orbitDistance": "384,400",
@@ -155,7 +170,7 @@ var AstronomicalBodiesNames = {
         "rings": "No",
         "adjective": "Lunar",
     },
-    150: {        
+    "Mars": {
         "name": "Mars",
         "volumeXEarths": "0.151",
         "orbitDistance": "227,943,824",
@@ -170,7 +185,7 @@ var AstronomicalBodiesNames = {
         "rings": "No",
         "adjective": "Martian",
     },
-    220: {
+    "Jupiter": {
         "name": "Jupiter",
         "volumeXEarths": "1,321",
         "orbitDistance": "778,340,821",
@@ -185,7 +200,7 @@ var AstronomicalBodiesNames = {
         "rings": "Yes",
         "adjective": "Jovian",
     },
-    320: {
+    "Saturn": {
         "name": "Saturn",
         "volumeXEarths": "764",
         "orbitDistance": "1,426,666,422",
@@ -200,7 +215,7 @@ var AstronomicalBodiesNames = {
         "rings": "Yes",
         "adjective": "Saturnian",
     },
-    420: {
+    "Uranus": {
         "name": "Uranus",
         "volumeXEarths": "63",
         "orbitDistance": "2,870,658,186",
@@ -215,7 +230,7 @@ var AstronomicalBodiesNames = {
         "rings": "Yes",
         "adjective": "Saturnian",
     },
-    500: {
+    "Neptune": {
         "name": "Neptune",
         "volumeXEarths": "58",
         "orbitDistance": "4,498,396,441",
