@@ -35,7 +35,7 @@ function SceneManager(canvas) {
 
     //Picker
     const pickPosition = { x: 0, y: 0 };
-    const pickHelper = new PickHelper();
+    // const pickHelper = new PickHelper();
     clearPickPosition();
 
     function buildScene() {
@@ -131,7 +131,7 @@ function SceneManager(canvas) {
 
 
         let x = sceneSubjects[0];
-        pickHelper.pick(pickPosition, x.getAstrionomicalBodies(), camera, time, scene);
+        // pickHelper.pick(pickPosition, x.getAstrionomicalBodies(), camera, time, scene);
         cameraControls.update();
         renderer.render(scene, camera);
     }
