@@ -75,7 +75,10 @@ function SceneManager(canvas) {
             new SolarSystem(scene),
             new AmbientLight(scene),
             new SunLight(scene),
-            new Stars(scene)
+            new Stars(scene),
+            new Stars(scene, new THREE.Vector3(700, 700, 200), new THREE.Vector3(0, 30, 0), 300, 1000, BodyType.CAPSULE, [0.75, 0.889], [1, 1], [0.6, 0.8], [5, 12]),
+            new Stars(scene, new THREE.Vector3(-700, -200, 800), new THREE.Vector3(0, 0, 90), 200, 200, BodyType.CAPSULE, [20 / 360, 50 / 360], [1, 1], [0.6, 0.8], [5, 12]),
+            new Stars(scene, new THREE.Vector3(1200, -100, -800), new THREE.Vector3(90, 30, 20), 200, 200, BodyType.CAPSULE, [25 / 360, 70 / 360], [0.8, 0.85], [0.65, 0.7], [5, 12]),
         ];
 
         return sceneSubjects;
