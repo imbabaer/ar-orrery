@@ -50,6 +50,7 @@ function SceneManager(canvas) {
         const DPR = (window.devicePixelRatio) ? window.devicePixelRatio : 1;
         renderer.setPixelRatio(DPR);
         renderer.setSize(width, height);
+        renderer.xr.enabled = true;
 
         renderer.gammaInput = true;
         renderer.gammaOutput = true;
@@ -71,15 +72,54 @@ function SceneManager(canvas) {
     }
 
     function createSceneSubjects(scene) {
+        var starsSystemOptions = [{},{
+            scene: scene,
+            center: new THREE.Vector3(700, 700, 200),
+            rotation: new THREE.Vector3(0, 30, 0),
+            radius: 300,
+            numStars: 1000,
+            bodyType: BodyType.CAPSULE,
+            hueSpectrum: [0.75, 0.889],
+            satSpecturm: [1, 1],
+            lightnessSpectrum: [0.6, 0.8],
+            sizeRange: [5, 12],
+            capsuleHeightFactor: 4
+        },
+        {
+            center: new THREE.Vector3(-700, -200, 800),
+            rotation: new THREE.Vector3(0, 0, 90),
+            radius: 200,
+            numStars: 200,
+            bodyType: BodyType.CAPSULE,
+            hueSpectrum: [20 / 360, 50 / 360],
+            satSpecturm: [1, 1],
+            lightnessSpectrum: [0.6, 0.8],
+            sizeRange: [5, 12],
+            capsuleHeightFactor: 4
+        },
+        {
+            center: new THREE.Vector3(1200, -100, -800),
+            rotation: new THREE.Vector3(90, 30, 20),
+            radius: 200,
+            numStars: 200,
+            bodyType: BodyType.CAPSULE,
+            hueSpectrum: [25 / 360, 70 / 360],
+            satSpecturm: [0.8, 0.85],
+            lightnessSpectrum: [0.65, 0.7],
+            sizeRange: [5, 12],
+            capsuleHeightFactor: 4
+        }
+        ];
+
         const sceneSubjects = [
             new SolarSystem(scene),
             new AmbientLight(scene),
             new SunLight(scene),
-            new Stars(scene),
-            new Stars(scene, new THREE.Vector3(700, 700, 200), new THREE.Vector3(0, 30, 0), 300, 1000, BodyType.CAPSULE, [0.75, 0.889], [1, 1], [0.6, 0.8], [5, 12]),
-            new Stars(scene, new THREE.Vector3(-700, -200, 800), new THREE.Vector3(0, 0, 90), 200, 200, BodyType.CAPSULE, [20 / 360, 50 / 360], [1, 1], [0.6, 0.8], [5, 12]),
-            new Stars(scene, new THREE.Vector3(1200, -100, -800), new THREE.Vector3(90, 30, 20), 200, 200, BodyType.CAPSULE, [25 / 360, 70 / 360], [0.8, 0.85], [0.65, 0.7], [5, 12]),
+            // new Stars(scene),
         ];
+        starsSystemOptions.forEach(options => {
+            sceneSubjects.push(new Stars(scene, options));
+        })
 
         return sceneSubjects;
     }

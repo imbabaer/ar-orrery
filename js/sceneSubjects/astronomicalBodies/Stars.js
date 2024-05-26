@@ -4,7 +4,20 @@ const BodyType = {
     CAPSULE: "capsule",
 };
 
-function Stars(scene, center = new THREE.Vector3(0, 0, 0), rotation = new THREE.Vector3(0, 0, 0), radius = 1250, numStars = 10000, bodyType = BodyType.CUBE, hueSpectrum = [0, 0], satSpecturm = [0, 0], lightnessSpectrum = [0.13, 0.79], sizeRange = [3, 12]) {
+// function Stars(scene, center = new THREE.Vector3(0, 0, 0), rotation = new THREE.Vector3(0, 0, 0), radius = 1250, numStars = 10000, bodyType = BodyType.CUBE, hueSpectrum = [0, 0], satSpecturm = [0, 0], lightnessSpectrum = [0.13, 0.79], sizeRange = [3, 12], capsuleHeightFactor = 4) {
+function Stars(scene, options = {}) {
+    var center = options.center ?? new THREE.Vector3(0, 0, 0);
+    var rotation = options.rotation ?? new THREE.Vector3(0, 0, 0);
+    var radius = options.radius ?? 1250;
+    var numStars = options.numStars ?? 10000;
+    var bodyType = options.bodyType ?? BodyType.CUBE;
+    var hueSpectrum = options.hueSpectrum ?? [0, 0];
+    var satSpecturm = options.satSpecturm ?? [0, 0];
+    var lightnessSpectrum = options.lightnessSpectrum ?? [0.13, 0.79];
+    var sizeRange = options.sizeRange ?? [3, 12];
+    var capsuleHeightFactor = options.capsuleHeightFactor ?? 4;
+
+
     var vertices = [];
     var sizes = [];
     var colors = [];
@@ -21,7 +34,7 @@ function Stars(scene, center = new THREE.Vector3(0, 0, 0), rotation = new THREE.
             var z = r * Math.cos(theta);
         }
         else if (bodyType == BodyType.CAPSULE) {
-            var height = radius * 4;
+            var height = radius * (capsuleHeightFactor);
             var phi = THREE.MathUtils.randFloat(0, 2 * Math.PI);
             var r = THREE.MathUtils.randFloat(0, radius);
             var h = THREE.MathUtils.randFloat(-height / 2, height / 2);
