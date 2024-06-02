@@ -19,7 +19,7 @@ import * as THREE from './libs/three.module.min.js';
 import { SolarSystem } from './sceneSubjects/SolarSystem.js';
 import { AmbientLight } from './sceneSubjects/AmbientLight.js';
 import { SunLight } from './sceneSubjects/SunLight.js';
-import { Stars, BodyType} from './sceneSubjects/astronomicalBodies/Stars.js';
+import { Stars, BodyType } from './sceneSubjects/astronomicalBodies/Stars.js';
 import { MyCameraControls } from './cameraControls/MyCameraControls.js';
 import { ARButton } from './libs/ARButton.js';
 
@@ -31,7 +31,7 @@ export function SceneManager(canvas) {
         height: canvas.height
     }
     const scene = buildScene();
-    const renderer = buildRender(screenDimensions);
+    const renderer = buildRender(canvas, screenDimensions);
     const camera = buildCamera(screenDimensions);
     const sceneSubjects = createSceneSubjects(scene);
 
@@ -41,11 +41,26 @@ export function SceneManager(canvas) {
 
     // ar stuff?
 
-    document.body.appendChild(ARButton.createButton(renderer));
+    document.body.appendChild(ARButton.createButton(renderer, { requiredFeatures: ['hit-test'] }));
 
-    const controller = renderer.xr.getController(0);
+
+
+
+    const geometry = new THREE.CylinderGeometry(0, 0.05, 0.2, 32).rotateX(Math.PI / 2);
+
+    function onSelect() {
+
+        const material = new THREE.MeshPhongMaterial({ color: 0xffffff * Math.random() });
+        const mesh = new THREE.Mesh(geometry, material);
+        mesh.position.set(0, 0, - 0.3).applyMatrix4(controller.matrixWorld);
+        mesh.quaternion.setFromRotationMatrix(controller.matrixWorld);
+        scene.add(mesh);
+
+    }
+
+    let controller = renderer.xr.getController(0);
+    controller.addEventListener('select', onSelect);
     scene.add(controller);
-
     // ar stuff end
 
 
@@ -61,7 +76,7 @@ export function SceneManager(canvas) {
         return scene;
     }
 
-    function buildRender({ width, height }) {
+    function buildRender(canvas, { width, height }) {
         const renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true, alpha: true });
         const DPR = (window.devicePixelRatio) ? window.devicePixelRatio : 1;
         renderer.setPixelRatio(DPR);
