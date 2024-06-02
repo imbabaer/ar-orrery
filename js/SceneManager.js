@@ -15,8 +15,15 @@ A SceneSubject represents one entity in the scene.
 The SceneManager usually contains multiple SceneSubjects.
 */
 
+import * as THREE from './libs/three.module.min.js';
+import { SolarSystem } from './sceneSubjects/SolarSystem.js';
+import { AmbientLight } from './sceneSubjects/AmbientLight.js';
+import { SunLight } from './sceneSubjects/SunLight.js';
+import { Stars, BodyType} from './sceneSubjects/astronomicalBodies/Stars.js';
+import { MyCameraControls } from './cameraControls/MyCameraControls.js';
+import { ARButton } from './libs/ARButton.js';
 
-function SceneManager(canvas) {
+export function SceneManager(canvas) {
 
     // scene setup
     const screenDimensions = {
@@ -31,6 +38,15 @@ function SceneManager(canvas) {
     const cameraControls = new MyCameraControls(camera, canvas);
 
     scene.background = new THREE.Color('black');
+
+    // ar stuff?
+
+    document.body.appendChild(ARButton.createButton(renderer));
+
+    const controller = renderer.xr.getController(0);
+    scene.add(controller);
+
+    // ar stuff end
 
 
     //Picker
@@ -72,7 +88,7 @@ function SceneManager(canvas) {
     }
 
     function createSceneSubjects(scene) {
-        var starsSystemOptions = [{},{
+        var starsSystemOptions = [{}, {
             scene: scene,
             center: new THREE.Vector3(700, 700, 200),
             rotation: new THREE.Vector3(0, 30, 0),

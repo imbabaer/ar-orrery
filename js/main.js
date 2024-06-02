@@ -6,20 +6,20 @@ the main has three basic responsibilities:
 
 */
 
-// run node server:  http-server --cors -o -c-1
+import { SceneManager } from './SceneManager.js';
 
+// run node server:  http-server --cors -o -c-1
 const canvas = document.querySelector('#canvas');
 const sceneManager = new SceneManager(canvas);
 
-bindEventListeners();
-render();
 
-function bindEventListeners() {
+
+export function bindEventListeners() {
     window.onresize = resizeCanvas;
     resizeCanvas();
 }
 
-function resizeCanvas() {
+export function resizeCanvas() {
     canvas.style.width = '100%';
     canvas.style.height = '100%';
 
@@ -29,9 +29,12 @@ function resizeCanvas() {
     sceneManager.onWindowResize();
 }
 
-function render(time) {
+export function render(time) {
     // convert time into seconds
     time *= 0.001;
     requestAnimationFrame(render);
     sceneManager.update(time);
 }
+
+bindEventListeners(sceneManager);
+render(0,sceneManager);

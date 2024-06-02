@@ -1,11 +1,12 @@
-const BodyType = {
+export const BodyType = {
     SPHERE: "sphere",
     CUBE: "cube",
     CAPSULE: "capsule",
 };
+import * as THREE from './../../libs/three.module.min.js';
 
 // function Stars(scene, center = new THREE.Vector3(0, 0, 0), rotation = new THREE.Vector3(0, 0, 0), radius = 1250, numStars = 10000, bodyType = BodyType.CUBE, hueSpectrum = [0, 0], satSpecturm = [0, 0], lightnessSpectrum = [0.13, 0.79], sizeRange = [3, 12], capsuleHeightFactor = 4) {
-function Stars(scene, options = {}) {
+export function Stars(scene, options = {}) {
     var center = options.center ?? new THREE.Vector3(0, 0, 0);
     var rotation = options.rotation ?? new THREE.Vector3(0, 0, 0);
     var radius = options.radius ?? 1250;

@@ -213,14 +213,16 @@ var planets = [
     }
 ]
 
-function SolarSystem(scene, time) {
+import * as THREE from './../libs/three.module.min.js';
+
+export function SolarSystem(scene, time) {
     const loader = new THREE.TextureLoader();
 
     var astrionomicalBodies = [];
 
     const solarSystem = new THREE.Group();
     scene.add(solarSystem);
-    var sunMesh = createSun("sun", 20, scene, solarSystem, astrionomicalBodies, loader, "assets/textures/fantasy1/black.png");
+    var sunMesh = createSun("sun", 20, scene, solarSystem, astrionomicalBodies, loader, "assets/textures/fantasy1/black.png", true);
 
     planets.forEach(planet => {
 
@@ -396,7 +398,7 @@ function createPlanet(name, size, distanceX, scene, orbit, astrionomicalBodies, 
     var planetMesh = new THREE.Mesh(geometry, material);
 
     planetMesh.position.set(distanceX, 0, 0);
-    planetMesh.rotation.set(THREE.Math.degToRad(selfTilt), 0, 0);
+    planetMesh.rotation.set(THREE.MathUtils.degToRad(selfTilt), 0, 0);
     planetMesh.name = name;
 
     orbit.add(planetMesh);
@@ -424,7 +426,7 @@ function createOrbitLine(distanceX, scene, astrionomicalBodies, tilt = 0, orbitL
     const innerRadius = distanceX - orbitLineHalfWidth;
     const outerRadius = distanceX + orbitLineHalfWidth;
     const thetaSegments = 80;
-    const geometry = new THREE.RingBufferGeometry(innerRadius, outerRadius, thetaSegments);
+    const geometry = new THREE.RingGeometry(innerRadius, outerRadius, thetaSegments);
     const material = new THREE.MeshBasicMaterial({
         color: 0xf5e96c,
         opacity: 0.2,
@@ -433,7 +435,7 @@ function createOrbitLine(distanceX, scene, astrionomicalBodies, tilt = 0, orbitL
     });
     var mesh = new THREE.Mesh(geometry, material);
 
-    mesh.rotation.x = THREE.Math.degToRad(tilt + 90);// Math.PI / 2;
+    mesh.rotation.x = THREE.MathUtils.degToRad(tilt + 90);// Math.PI / 2;
     // mesh.rotation.set(THREE.Math.degToRad(tilt), 0, 0);
 
     //astrionomicalBodies.push(mesh);

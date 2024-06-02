@@ -1,5 +1,8 @@
-function MyCameraControls(camera, canvas) {
-    const controls = new THREE.OrbitControls(camera, canvas);    
+import * as THREE from './../libs/three.module.min.js';
+import { OrbitControls } from './../libs/OrbitControls.js';
+
+export function MyCameraControls(camera, canvas) {
+    const controls = new OrbitControls(camera, canvas);    
 
     this.update = function () {
         controls.update();

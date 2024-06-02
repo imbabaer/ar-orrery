@@ -1,4 +1,6 @@
-function AmbientLight(scene) {
+import * as THREE from './../libs/three.module.min.js';
+
+export function AmbientLight(scene) {
     const color = 0xFFFFFF;
     const intensity = 0.08;
 

@@ -1,4 +1,6 @@
-function SunLight(scene) {
+import * as THREE from './../libs/three.module.min.js';
+
+export function SunLight(scene) {
     const color = 0xFFFFFF;
     const intensity = 0.1;
     const sunLight = new THREE.PointLight(color, intensity);
