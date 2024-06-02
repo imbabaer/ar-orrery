@@ -62,7 +62,14 @@ export function SceneManager(canvas) {
     controller.addEventListener('select', onSelect);
     scene.add(controller);
     // ar stuff end
+    animate();
+    function animate() {
+        renderer.setAnimationLoop(render);
+    }
 
+    function render() {
+        renderer.render(scene, camera);
+    }
 
     //Picker
     const pickPosition = { x: 0, y: 0 };
