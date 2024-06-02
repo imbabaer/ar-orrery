@@ -88,43 +88,45 @@ export function SceneManager(canvas) {
     }
 
     function createSceneSubjects(scene) {
-        var starsSystemOptions = [{}, {
-            scene: scene,
-            center: new THREE.Vector3(700, 700, 200),
-            rotation: new THREE.Vector3(0, 30, 0),
-            radius: 300,
-            numStars: 1000,
-            bodyType: BodyType.CAPSULE,
-            hueSpectrum: [0.75, 0.889],
-            satSpecturm: [1, 1],
-            lightnessSpectrum: [0.6, 0.8],
-            sizeRange: [5, 12],
-            capsuleHeightFactor: 4
-        },
-        {
-            center: new THREE.Vector3(-700, -200, 800),
-            rotation: new THREE.Vector3(0, 0, 90),
-            radius: 200,
-            numStars: 200,
-            bodyType: BodyType.CAPSULE,
-            hueSpectrum: [20 / 360, 50 / 360],
-            satSpecturm: [1, 1],
-            lightnessSpectrum: [0.6, 0.8],
-            sizeRange: [5, 12],
-            capsuleHeightFactor: 4
-        },
-        {
-            center: new THREE.Vector3(1200, -100, -800),
-            rotation: new THREE.Vector3(90, 30, 20),
-            radius: 200,
-            numStars: 200,
-            bodyType: BodyType.CAPSULE,
-            hueSpectrum: [25 / 360, 70 / 360],
-            satSpecturm: [0.8, 0.85],
-            lightnessSpectrum: [0.65, 0.7],
-            sizeRange: [5, 12],
-            capsuleHeightFactor: 4
-        }
+        var starsSystemOptions = [
+            {}, // default grey stars 
+            {
+                scene: scene,
+                center: new THREE.Vector3(700, 700, 200),
+                rotation: new THREE.Vector3(0, 30, 0),
+                radius: 300,
+                numStars: 1000,
+                bodyType: BodyType.CAPSULE,
+                hueSpectrum: [0.75, 0.889],
+                satSpecturm: [1, 1],
+                lightnessSpectrum: [0.6, 0.8],
+                sizeRange: [5, 12],
+                capsuleHeightFactor: 4
+            },
+            {
+                center: new THREE.Vector3(-700, -200, 800),
+                rotation: new THREE.Vector3(0, 0, 90),
+                radius: 200,
+                numStars: 200,
+                bodyType: BodyType.CAPSULE,
+                hueSpectrum: [20 / 360, 50 / 360],
+                satSpecturm: [1, 1],
+                lightnessSpectrum: [0.6, 0.8],
+                sizeRange: [5, 12],
+                capsuleHeightFactor: 4
+            },
+            {
+                center: new THREE.Vector3(1200, -100, -800),
+                rotation: new THREE.Vector3(90, 30, 20),
+                radius: 200,
+                numStars: 200,
+                bodyType: BodyType.CAPSULE,
+                hueSpectrum: [25 / 360, 70 / 360],
+                satSpecturm: [0.8, 0.85],
+                lightnessSpectrum: [0.65, 0.7],
+                sizeRange: [5, 12],
+                capsuleHeightFactor: 4
+            }
         ];
 
         const sceneSubjects = [

@@ -222,7 +222,7 @@ export function SolarSystem(scene, time) {
 
     const solarSystem = new THREE.Group();
     scene.add(solarSystem);
-    var sunMesh = createSun("sun", 20, scene, solarSystem, astrionomicalBodies, loader, "assets/textures/fantasy1/black.png", true);
+    var sunMesh = createSun("sun", 20, scene, solarSystem, astrionomicalBodies, loader, "assets/textures/sun.jpg", true);
 
     planets.forEach(planet => {
 
