@@ -36,9 +36,25 @@ export function SceneManager (canvas) {
 	const sceneSubjects = createSceneSubjects(scene);
 
 	const cameraControls = new MyCameraControls(camera, canvas);
-
 	scene.background = new THREE.Color('black');
 
+	// ar stuff?
+	document.body.appendChild(ARButton.createButton(renderer, { requiredFeatures: ['hit-test'] }));
+	const geometry = new THREE.CylinderGeometry(0, 0.05, 0.2, 32).rotateX(Math.PI / 2);
+	// function onSelect() {
+
+	//     const material = new THREE.MeshPhongMaterial({ color: 0xffffff * Math.random() });
+	//     const mesh = new THREE.Mesh(geometry, material);
+	//     mesh.position.set(0, 0, - 0.3).applyMatrix4(controller.matrixWorld);
+	//     mesh.quaternion.setFromRotationMatrix(controller.matrixWorld);
+	//     scene.add(mesh);
+
+	// }
+
+	let controller = renderer.xr.getController(0);
+	// controller.addEventListener('select', onSelect);
+	scene.add(controller);
+	// ar stuff end
 
 	animate();
 	function animate () {
@@ -57,24 +73,6 @@ export function SceneManager (canvas) {
 	function buildScene () {
 		const scene = new THREE.Scene();
 		scene.background = new THREE.Color("#000");
-		// ar stuff?
-		document.body.appendChild(ARButton.createButton(renderer, { requiredFeatures: ['hit-test'] }));
-		const geometry = new THREE.CylinderGeometry(0, 0.05, 0.2, 32).rotateX(Math.PI / 2);
-		// function onSelect() {
-
-		//     const material = new THREE.MeshPhongMaterial({ color: 0xffffff * Math.random() });
-		//     const mesh = new THREE.Mesh(geometry, material);
-		//     mesh.position.set(0, 0, - 0.3).applyMatrix4(controller.matrixWorld);
-		//     mesh.quaternion.setFromRotationMatrix(controller.matrixWorld);
-		//     scene.add(mesh);
-
-		// }
-
-		let controller = renderer.xr.getController(0);
-		// controller.addEventListener('select', onSelect);
-		scene.add(controller);
-		// ar stuff end
-		
 		return scene;
 	}
 

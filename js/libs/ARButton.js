@@ -187,7 +187,7 @@ class ARButton {
 		if ( 'xr' in navigator ) {
 
 			button.id = 'ARButton';
-			button.style.display = 'none';
+			button.style.display = 'block';
 
 			stylizeElement( button );
 
