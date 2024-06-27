@@ -112,7 +112,7 @@ export function SceneManager (canvas) {
 
 		const sceneSubjects = [
 			new SolarSystem(scene, current_solar_system["planets"], current_solar_system["sun"]),
-			new AmbientLight(scene),
+			new AmbientLight(scene, current_solar_system["ambient"]),
 			new SunLight(scene, current_solar_system["sun"]),
 			// new Stars(scene),
 		];

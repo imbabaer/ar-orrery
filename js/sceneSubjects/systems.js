@@ -227,6 +227,10 @@ export const systems = {
 			size: 20,
 			texturePath: "assets/textures/sun.jpg",
 			illuminated: true
+		},
+		ambient:{
+			color: 0xFFFFFF,
+			intensity: 0.038
 		}
 	},
 	realmspace:
@@ -320,9 +324,9 @@ export const systems = {
 				size: 15,
 				distanceX: 1900,
 				texture: "assets/textures/neptune.jpg",
-				rotationSpeed: 0.08,
+				rotationSpeed: 0.02,
 				revolutionSpeed: 0.01,
-				revolutionSpeedOffset: 0.5,
+				revolutionSpeedOffset: 2.5,
 				revolutionTiltAngle: -40,
 				selfTilt: 0,
 				moons: [
@@ -370,10 +374,10 @@ export const systems = {
 				size: 10,
 				distanceX: 2300,
 				texture: "assets/textures/neptune.jpg",
-				rotationSpeed: 0.08,
+				rotationSpeed: 0.01,
 				revolutionSpeed: 0.01,
-				revolutionSpeedOffset: 0.5,
-				revolutionTiltAngle: -40,
+				revolutionSpeedOffset: -1.5,
+				revolutionTiltAngle: -30,
 				selfTilt: 0,
 				illuminated: false,
 				moons: [
@@ -529,12 +533,12 @@ export const systems = {
 				size: 22,
 				distanceX: 3000,
 				texture: "assets/textures/neptune.jpg",
-				rotationSpeed: 0.08,
+				rotationSpeed: 0.12,
 				revolutionSpeed: 0.01,
-				revolutionSpeedOffset: 0.5,
+				revolutionSpeedOffset: -2.5,
 				revolutionTiltAngle: -40,
 				selfTilt: 0,
-				
+
 				moons: [
 					{
 						name: "m1",
@@ -605,11 +609,15 @@ export const systems = {
 		],
 		sun: {
 			color: 0xFFFFFF,
-			intensity: 111100.91,
+			intensity: 11110.91,
 			name: "sun",
 			size: 20,
 			texturePath: "assets/textures/sun.jpg",
 			illuminated: true
+		},
+		ambient:{
+			color: 0xFFFFFF,
+			intensity: 0.3218
 		}
 	}
 }
