@@ -28,6 +28,7 @@ export function SceneManager (canvas) {
 	const urlParams = new URLSearchParams(window.location.search);
 	const system_name = urlParams.get('system_name');
 	console.log("this is systemname:", system_name);
+	document.getElementById("title").innerHTML = system_name + " System";
 	const current_solar_system = systems[system_name];
 	// scene setup
 	const screenDimensions = {
