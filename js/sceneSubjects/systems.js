@@ -309,7 +309,7 @@ export const systems = {
 				description: "The next of the Five Wanderers,[1] Chandos was another oceanic world. Its seas contained lumps of rock that, when piled high enough, created highly unstable islands. Those living on these islands were the human, dwarven, and orcish descendants from a pair of spelljammers that crash-landed here long ago. Over time, they lost their technologies and developed an enmity for each other, forgetting their pasts and becoming primitive.[13] From Toril, this planet appeared as a greenish-brown smudge, which changed over time.",
 				size: 20,
 				distanceX: 800,
-				texture: "assets/textures/neptune.jpg",
+				texture: "assets/textures/fantasy1/p8.png",
 				rotationSpeed: 0.08,
 				revolutionSpeed: 0.01,
 				revolutionSpeedOffset: 0.5,
@@ -569,14 +569,31 @@ export const systems = {
 
 		],
 		stars: [
-			{}, // default grey stars 
+			{
+				bodyType: BodyType.SPHERE,
+				radius: 4000,
+				numStars: 200000,
+
+			}, // default grey stars 
 			{
 				center: new THREE.Vector3(700, 1200, 200),
 				rotation: new THREE.Vector3(0, 30, 0),
 				radius: 500,
-				numStars: 4000,
+				numStars: 3000,
 				bodyType: BodyType.CAPSULE,
 				hueSpectrum: [0.75, 0.889],
+				satSpecturm: [1, 1],
+				lightnessSpectrum: [0.6, 0.8],
+				sizeRange: [5, 12],
+				capsuleHeightFactor: 6
+			},
+			{
+				center: new THREE.Vector3(700, 1200, 200),
+				rotation: new THREE.Vector3(0, 30, 0),
+				radius: 550,
+				numStars: 2000,
+				bodyType: BodyType.CAPSULE,
+				hueSpectrum: [200 / 360, 240 / 360],
 				satSpecturm: [1, 1],
 				lightnessSpectrum: [0.6, 0.8],
 				sizeRange: [5, 12],
