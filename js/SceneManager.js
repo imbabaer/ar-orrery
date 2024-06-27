@@ -38,7 +38,6 @@ export function SceneManager (canvas) {
 	const scene = buildScene();
 	const renderer = buildRender(canvas, screenDimensions);
 	const camera = buildCamera(screenDimensions);
-	const sceneSubjects = createSceneSubjects(scene);
 
 	const cameraControls = new MyCameraControls(camera, canvas);
 	scene.background = new THREE.Color('black');
@@ -61,6 +60,9 @@ export function SceneManager (canvas) {
 	scene.add(controller);
 	// ar stuff end
 
+	const sceneSubjects = createSceneSubjects(scene, controller);
+
+	
 	animate();
 	function animate () {
 		renderer.setAnimationLoop(render);
@@ -107,11 +109,11 @@ export function SceneManager (canvas) {
 		return camera;
 	}
 
-	function createSceneSubjects (scene) {
+	function createSceneSubjects (scene, controller) {
 
 
 		const sceneSubjects = [
-			new SolarSystem(scene, current_solar_system["planets"], current_solar_system["sun"]),
+			new SolarSystem(scene, controller, current_solar_system["planets"], current_solar_system["sun"]),
 			new AmbientLight(scene, current_solar_system["ambient"]),
 			new SunLight(scene, current_solar_system["sun"]),
 			// new Stars(scene),

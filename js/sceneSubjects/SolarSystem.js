@@ -215,7 +215,7 @@ var defaultplanets = [
 
 import * as THREE from './../libs/three.module.min.js';
 
-export function SolarSystem (scene, planets = [], sun = null) {
+export function SolarSystem (scene, controller, planets = [], sun = null) {
 	if (!planets || planets.length == 0) planets = defaultplanets
 	const loader = new THREE.TextureLoader();
 
@@ -229,7 +229,7 @@ export function SolarSystem (scene, planets = [], sun = null) {
 	sun["loader"] = loader;
 
 
-	var sunMesh = createSunCompact(sun);
+	var sunMesh = createSunCompact(sun, controller);
 
 	planets.forEach(planet => {
 
@@ -413,16 +413,18 @@ function createPlanet (name, size, distanceX, scene, orbit, astrionomicalBodies,
 
 	return planetMesh;
 }
-function createSunCompact (sun) {
-	return createSun(sun.name, sun.size, sun.orbit, sun.astrionomicalBodies, sun.loader, sun.texturePath, sun.illuminated);
+function createSunCompact (sun, controller) {
+	return createSun(controller, sun.name, sun.size, sun.orbit, sun.astrionomicalBodies, sun.loader, sun.texturePath, sun.illuminated);
 }
-function createSun (name, size, orbit, astrionomicalBodies, loader, texturePath = null, illuminated = true) {
+function createSun (controller, name, size, orbit, astrionomicalBodies, loader, texturePath = null, illuminated = true) {
 	var geometry = new THREE.SphereGeometry(size, 32, 16);
 
 	//without callback
 	var texture = loader.load(texturePath ?? "assets/textures/" + name + ".jpg");
 	var material = illuminated ? new THREE.MeshBasicMaterial({ map: texture }) : new THREE.MeshPhongMaterial({ map: texture });
 	var sunMesh = new THREE.Mesh(geometry, material);
+	sunMesh.applyMatrix4( controller.matrixWorld );
+
 	sunMesh.name = name;
 
 	orbit.add(sunMesh);
