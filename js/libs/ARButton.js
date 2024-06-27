@@ -72,8 +72,6 @@ class ARButton {
 
 			}
 
-			//
-
 			button.style.display = '';
 
 			button.style.cursor = 'pointer';
@@ -81,28 +79,15 @@ class ARButton {
 			button.style.width = '100px';
 
 			button.textContent = 'START AR';
-			button.style.opacity = '1.0';
-			button.onfocus = function () {
-				button.style.background = "rgb(255,0,0)"
-			}
-			button.onblur = function () {
-				button.style.background = "rgb(255,255,255)"
-			}
-			// button.onmouseenter = function () {
 
-			// 	button.style.opacity = '1.0';
-
-			// };
-
-			// button.onmouseleave = function () {
-
-			// 	button.style.opacity = '0.5';
-
-			// };
+			button.onmouseenter = function () {
+				button.style.opacity = '1.0';
+			};
+			button.onmouseleave = function () {
+				button.style.opacity = '0.5';
+			};
 
 			button.onclick = function () {
-				console.log('button click');
-				button.textContent += '.';
 				if (currentSession === null) {
 
 					navigator.xr.requestSession('immersive-ar', sessionInit).then(onSessionStarted);
