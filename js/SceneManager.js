@@ -208,22 +208,22 @@ export function SceneManager (canvas) {
 		pickPosition.y = undefined;
 	}
 
-	window.addEventListener('dblclick', setPickPosition);
-	window.addEventListener('mouseout', clearPickPosition);
-	window.addEventListener('mouseleave', clearPickPosition);
+	// window.addEventListener('dblclick', setPickPosition);
+	// window.addEventListener('mouseout', clearPickPosition);
+	// window.addEventListener('mouseleave', clearPickPosition);
 
-	// Mobile support
-	window.addEventListener('touchstart', (event) => {
-		// prevent the window from scrolling
-		event.preventDefault();
-		setPickPosition(event.touches[0]);
-	}, { passive: false });
+	// // Mobile support
+	// window.addEventListener('touchstart', (event) => {
+	// 	// prevent the window from scrolling
+	// 	event.preventDefault();
+	// 	setPickPosition(event.touches[0]);
+	// }, { passive: false });
 
-	window.addEventListener('touchmove', (event) => {
-		setPickPosition(event.touches[0]);
-	});
+	// window.addEventListener('touchmove', (event) => {
+	// 	setPickPosition(event.touches[0]);
+	// });
 
-	window.addEventListener('touchend', clearPickPosition);
+	// window.addEventListener('touchend', clearPickPosition);
 
 
 
@@ -243,12 +243,12 @@ export function SceneManager (canvas) {
 		});
 
 
-		// When the user clicks anywhere outside of the modal, close it (mobile)
-		window.addEventListener('touchend', (event) => {
-			if (event.target == modal) {
-				modal.style.display = "none";
-			}
-		});
+		// // When the user clicks anywhere outside of the modal, close it (mobile)
+		// window.addEventListener('touchend', (event) => {
+		// 	if (event.target == modal) {
+		// 		modal.style.display = "none";
+		// 	}
+		// });
 
 
 		// When the user clicks anywhere outside of the modal, close it
