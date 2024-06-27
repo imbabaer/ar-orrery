@@ -74,7 +74,7 @@ class ARButton {
 
 			//
 
-			button.style.display = '';
+			button.style.display = 'block';
 
 			button.style.cursor = 'pointer';
 			button.style.left = 'calc(50% - 50px)';
@@ -187,7 +187,7 @@ class ARButton {
 		if ( 'xr' in navigator ) {
 
 			button.id = 'ARButton';
-			button.style.display = 'block';
+			button.style.display = 'none';
 
 			stylizeElement( button );
 
