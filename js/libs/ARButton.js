@@ -74,28 +74,29 @@ class ARButton {
 
 			//
 
-			button.style.display = 'block';
+			button.style.display = '';
 
 			button.style.cursor = 'pointer';
 			button.style.left = 'calc(50% - 50px)';
 			button.style.width = '100px';
 
 			button.textContent = 'START AR';
+			button.style.opacity = '1.0';
+			// button.onmouseenter = function () {
 
-			button.onmouseenter = function () {
+			// 	button.style.opacity = '1.0';
 
-				button.style.opacity = '1.0';
+			// };
 
-			};
+			// button.onmouseleave = function () {
 
-			button.onmouseleave = function () {
+			// 	button.style.opacity = '0.5';
 
-				button.style.opacity = '0.5';
-
-			};
+			// };
 
 			button.onclick = function () {
-				console.log("ARButton clicked")
+				console.log('button click');
+				button.textContent += '.';
 				if ( currentSession === null ) {
 
 					navigator.xr.requestSession( 'immersive-ar', sessionInit ).then( onSessionStarted );
@@ -180,7 +181,7 @@ class ARButton {
 			element.style.textAlign = 'center';
 			element.style.opacity = '0.5';
 			element.style.outline = 'none';
-			element.style.zIndex = '9999';
+			element.style.zIndex = '999';
 
 		}
 
@@ -192,7 +193,7 @@ class ARButton {
 			stylizeElement( button );
 
 			navigator.xr.isSessionSupported( 'immersive-ar' ).then( function ( supported ) {
-				console.log("supported: ", supported);
+
 				supported ? showStartAR() : showARNotSupported();
 
 			} ).catch( showARNotAllowed );
